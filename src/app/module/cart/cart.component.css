@@ -1,0 +1,20 @@
+.text-box {
+    width: 30px;
+    text-align: center;
+    margin: 0 5px;
+    font-weight: 700;
+}
+.join {
+    font-weight: 700;
+    padding: 4px 15px;
+}
+.table {
+    border: 1px solid #cccc;
+}
+.margin-top{
+    margin-top: 35px;
+}
+.btn {
+    background: #ff6200;
+    border: 1px solid  #ff6200;
+}

@@ -1,0 +1,109 @@
+<div class="px-4 px-lg-0" *ngIf="shippmentCompleteFlag || !cartData?.length">
+  <div class="pb-5">
+    <div class="container">
+      Thanks for Shopping with us.
+      <p>For continue the Shopping please click here <a routerLink="/home">Continue Shopping</a></p>
+    </div>
+  </div>
+</div>
+<div class="px-4 px-lg-0" *ngIf="!shippmentCompleteFlag && cartData?.length">
+  <div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5 margin-top">
+          <!-- Shopping cart table -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="p-2 px-3 text-uppercase">Product</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Price</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Quantity</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Remove</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cart of cartData">
+                  <th scope="row" class="border-0">
+                    <div class="p-2">
+                      <img src="./assets/img/shopping/{{cart.image}}.jpeg" alt="" width="40" class="img-fluid rounded shadow-sm">
+                      <div class="ml-3 d-inline-block align-middle">
+                        <h5 class="mb-0"> <a routerLink="/list/{{cart.type}}/details/{{cart.id}}" class="text-dark d-inline-block align-middle">{{cart.name}}</a>
+                        </h5><span class="text-muted font-weight-normal font-italic d-block">Category:
+                          {{cart.type}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="border-0 align-middle"><strong>{{cart.price}}</strong></td>
+                  <td class="border-0 align-middle">
+                    <button class="btn btn-primary join" (click)="adjustCart('remove', cart)"> -</button>
+                    <input type="text" class="text-box" [(ngModel)]="cart.quantity">
+                    <button class="btn btn-primary join " (click)="adjustCart('add', cart)">+</button>
+
+                  </td>
+                  <td class="border-0 align-middle"><a href="Javascript:void(0)" class="text-dark"
+                      (click)="removeCart(cart)" title="Remove Item"><i class="pi pi-times"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End -->
+        </div>
+      </div>
+      <div class="row py-5 p-4 bg-white rounded shadow-sm" *ngIf="!shippmentCompleteFlag">
+        <div class="col-lg-6">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
+          <div class="p-4">
+            <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+            <div class="input-group mb-4 border rounded-pill p-2">
+              <input type="text" placeholder="Apply coupon" [(ngModel)]="coupanCode" aria-describedby="button-addon3"
+                class="form-control border-0 ">
+              <div class="input-group-append border-0">
+                <button id="button-addon3" [disabled]="coupanDisable" (click)="applyCoupan()" type="button"
+                  class="btn btn-dark px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+              </div>
+            </div>
+            <span class="error">{{coupanMessage}}</span>
+          </div>
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
+          <div class="p-4">
+            <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below
+            </p>
+            <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+          <div class="p-4">
+            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.
+            </p>
+            <ul class="list-unstyled mb-4">
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal
+                </strong><strong> {{total}}</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and
+                  handling</strong><strong>{{shippingCharge}} +</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                  class="text-muted">Tax</strong><strong>{{taxAmount}} +</strong></li>
+              <li *ngIf="coupanAmount > 0" class="d-flex justify-content-between py-3 border-bottom"><strong
+                  class="text-muted">Coupan</strong><strong>{{coupanAmount}} -</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                <h5 class="font-weight-bold">{{totalCart}}</h5>
+              </li>
+            </ul><a href="javascript:void(0)" class="btn btn-dark rounded-pill py-2 btn-block"
+              (click)="proceedToCheckout()">Procceed to checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-alert [alertObj]="api.alertConfig" *ngIf="api.alertConfig?.modalShow" (buttonAction)="modalAction($event)">
+</app-alert>

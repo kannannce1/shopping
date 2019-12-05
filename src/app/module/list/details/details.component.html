@@ -1,0 +1,30 @@
+<div class="row list-container" *ngIf="productList">
+    <div class="col-md-4">
+        <img  src="../assets/img/shopping/{{productList.image}}.jpeg" height="" width="" alt="{{productList.image}}">
+
+    </div>
+    <div class="col-md-8">
+        <div class=" detail-img">
+                <h5 class="heading">{{productList.name}}</h5>
+                <h6>Specifications</h6>
+                <ul>
+                    <li>Ram: {{productList.ram}} GB</li>
+                    <li>Memory: {{productList.memory}} GB</li>
+                    <li *ngIf="productList.rearCamera">Rear Camera: {{productList.rearCamera}} MP</li>
+                    <li *ngIf="productList.frontCamera">Front Camera: {{productList.frontCamera}} MP</li>
+                    <li>Color: {{productList.color}}</li>
+                    <li *ngIf="productList.sim">SIM: {{productList.sim}} </li>
+                    <li *ngIf="productList.networkType">Network Type: {{productList.networkType}}</li>
+                    <li *ngIf="productList.supportedNetworks">Supported Networks: {{productList.supportedNetworks}}</li>
+                    <li *ngIf="productList.operatingSystem">operatingSystem: {{productList.operatingSystem}}</li>
+                    <li *ngIf="productList.processor">Processor: {{productList.processor}}</li>
+                    <li>Battery Capacity: {{productList.batteryCapacity}}</li>
+                </ul>
+        </div>
+        <div class="detail-btn float-right">
+            
+                <button class="btn btn-primary join " (click)="backToList()">Back to List</button>
+                <button class="btn btn-primary join " (click)="addToCart(productList)">Add to Cart</button>  
+           </div> 
+    </div>
+</div>

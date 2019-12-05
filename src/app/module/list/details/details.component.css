@@ -1,0 +1,26 @@
+.detail-btn{
+    position: absolute;
+    right: 0;
+    bottom: 10%;
+} 
+.join {
+    margin: 0px 10px;
+}
+.list-container{
+    max-height: 515px;
+    overflow: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+ul {
+    padding: 0;
+    font-size: 14px;
+}
+ul li {
+    list-style: none;
+    padding: 10px 10px;
+}
+.list-container {
+    min-height: 515px;
+    overflow: hidden;
+}

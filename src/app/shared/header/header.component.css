@@ -1,0 +1,43 @@
+.logout{
+    background: #fff;
+    border: none;
+    color: #ff6200;
+    margin-left: 20px;
+}
+.header-bg{
+    /* box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19); */
+    color:#fff;
+}
+.user-details{
+    position: absolute;
+    right: 76px;
+}
+.count {
+
+    padding: 6px 14px;
+    background: #fff;
+    color: #ff6200;
+    border:none;
+    margin-left: 12px;
+    font-weight: 600;
+}
+.toggle-class {
+    width: 100%;
+    right: 0;
+    padding: 6px 16px;;
+}
+.toggle-height{
+    min-height: 60px;
+    background: #ff6200;
+}
+.menu-contianer{
+    border-bottom: 1px solid #ff6200;
+    padding: 6px;
+    background: #fff;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+    color: #ff6200;
+}
+.pi-shopping-cart {
+    position: relative;
+    top: 3px;
+}
